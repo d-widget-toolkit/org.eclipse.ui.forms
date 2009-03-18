@@ -82,7 +82,6 @@ import java.util.Enumeration;
 import java.util.ArrayList;
 import java.util.Set;
 import java.io.InputStream;
-import tango.io.Stdout;
 
 /**
  * This class is a read-only text control that is capable of rendering wrapped
@@ -256,10 +255,10 @@ public class FormText : Canvas {
             Point result = new Point(textWidth, textHeight);
             if (DEBUG_TEXT) {
                 long stop = System.currentTimeMillis();
-                Stdout.formatln("FormText computeSize: {}ms", (stop - start)); //$NON-NLS-1$
+                getDwtLogger.info( __FILE__, __LINE__, "FormText computeSize: {}ms", (stop - start)); //$NON-NLS-1$
             }
             if (DEBUG_TEXTSIZE) {
-                Stdout.formatln("FormText ({}), computeSize: wHint={}, result={}", model.getAccessibleText(), wHint, result); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                getDwtLogger.info( __FILE__, __LINE__, "FormText ({}), computeSize: wHint={}, result={}", model.getAccessibleText(), wHint, result); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
             }
             return result;
         }
@@ -320,7 +319,7 @@ public class FormText : Canvas {
             selData = null;
             Rectangle carea = composite.getClientArea();
             if (DEBUG_TEXTSIZE) {
-                Stdout.formatln("FormText layout ({}), carea={}",model.getAccessibleText(),carea); //$NON-NLS-1$ //$NON-NLS-2$
+                getDwtLogger.info( __FILE__, __LINE__, "FormText layout ({}), carea={}",model.getAccessibleText(),carea); //$NON-NLS-1$ //$NON-NLS-2$
             }
             GC gc = new GC(composite);
             gc.setFont(getFont());
@@ -351,7 +350,7 @@ public class FormText : Canvas {
             gc.dispose();
             if (DEBUG_TEXT) {
                 long stop = System.currentTimeMillis();
-                Stdout.formatln("FormText.layout: {}ms", (stop - start)); //$NON-NLS-1$ //$NON-NLS-2$
+                getDwtLogger.info( __FILE__, __LINE__, "FormText.layout: {}ms", (stop - start)); //$NON-NLS-1$ //$NON-NLS-2$
             }
         }
     }
@@ -392,7 +391,7 @@ public class FormText : Canvas {
         addListener(SWT.Traverse, new class Listener {
             public void handleEvent(Event e) {
                 if (DEBUG_FOCUS)
-                    Stdout.formatln("Traversal: {}", e); //$NON-NLS-1$
+                    getDwtLogger.info( __FILE__, __LINE__, "Traversal: {}", e); //$NON-NLS-1$
                 switch (e.detail) {
                 case SWT.TRAVERSE_PAGE_NEXT:
                 case SWT.TRAVERSE_PAGE_PREVIOUS:
@@ -419,7 +418,7 @@ public class FormText : Canvas {
                 if (!hasFocus) {
                     hasFocus = true;
                     if (DEBUG_FOCUS) {
-                        Stdout.formatln("FormText: focus gained"); //$NON-NLS-1$
+                        getDwtLogger.info( __FILE__, __LINE__, "FormText: focus gained"); //$NON-NLS-1$
                     }
                     if (!mouseFocus && !controlFocusTransfer) {
                         handleFocusChange();
@@ -429,7 +428,7 @@ public class FormText : Canvas {
 
             public void focusLost(FocusEvent e) {
                 if (DEBUG_FOCUS) {
-                    Stdout.formatln("FormText: focus lost"); //$NON-NLS-1$
+                    getDwtLogger.info( __FILE__, __LINE__, "FormText: focus lost"); //$NON-NLS-1$
                 }
                 if (hasFocus) {
                     hasFocus = false;
@@ -715,7 +714,7 @@ public class FormText : Canvas {
                     break;
                 case SWT.Traverse:
                     if (DEBUG_FOCUS)
-                        Stdout.formatln("Control traversal: {}", e); //$NON-NLS-1$
+                        getDwtLogger.info( __FILE__, __LINE__, "Control traversal: {}", e); //$NON-NLS-1$
                     switch (e.detail) {
                     case SWT.TRAVERSE_PAGE_NEXT:
                     case SWT.TRAVERSE_PAGE_PREVIOUS:
@@ -805,7 +804,7 @@ public class FormText : Canvas {
             exitLink(oldLink, SWT.NULL);
         }
         if (DEBUG_FOCUS)
-            Stdout.formatln("Sync control: {}, oldLink={}", cs, oldLink); //$NON-NLS-1$ //$NON-NLS-2$
+            getDwtLogger.info( __FILE__, __LINE__, "Sync control: {}, oldLink={}", cs, oldLink); //$NON-NLS-1$ //$NON-NLS-2$
         model.select(cs);
         if (oldLink !is null)
             paintFocusTransfer(oldLink, null);
@@ -1326,7 +1325,7 @@ public class FormText : Canvas {
 
     private void handleMouseClick(MouseEvent e, bool down) {
         if (DEBUG_FOCUS)
-            Stdout.formatln("FormText: mouse click({})", down ); //$NON-NLS-1$ //$NON-NLS-2$
+            getDwtLogger.info( __FILE__, __LINE__, "FormText: mouse click({})", down ); //$NON-NLS-1$ //$NON-NLS-2$
         if (down) {
             // select a hyperlink
             mouseFocus = true;
@@ -1420,7 +1419,7 @@ public class FormText : Canvas {
 
     private bool advance(bool next) {
         if (DEBUG_FOCUS)
-            Stdout.formatln("Advance: next={}", next); //$NON-NLS-1$
+            getDwtLogger.info( __FILE__, __LINE__, "Advance: next={}", next); //$NON-NLS-1$
         IFocusSelectable current = model.getSelectedSegment();
         if (current !is null && null !is cast(IHyperlinkSegment)current )
             exitLink(cast(IHyperlinkSegment) current, SWT.NULL);
@@ -1460,7 +1459,7 @@ public class FormText : Canvas {
 
     private void handleFocusChange() {
         if (DEBUG_FOCUS) {
-            Stdout.formatln("Handle focus change: hasFocus={}, mouseFocus={}", hasFocus, //$NON-NLS-1$
+            getDwtLogger.info( __FILE__, __LINE__, "Handle focus change: hasFocus={}, mouseFocus={}", hasFocus, //$NON-NLS-1$
                     mouseFocus); //$NON-NLS-1$
         }
         if (hasFocus) {
@@ -1664,7 +1663,7 @@ public class FormText : Canvas {
         }
         Rectangle trim = computeTrim(0, 0, size.x, size.y);
         if (DEBUG_TEXTSIZE)
-            Stdout.formatln("FormText Computed size: {}",trim); //$NON-NLS-1$
+            getDwtLogger.info( __FILE__, __LINE__, "FormText Computed size: {}",trim); //$NON-NLS-1$
         return new Point(trim.width, trim.height);
     }
 
