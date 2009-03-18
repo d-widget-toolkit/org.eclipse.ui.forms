@@ -43,7 +43,7 @@ import org.eclipse.ui.forms.widgets.ILayoutExtension;
 import java.lang.all;
 import java.util.Set;
 
-import  org.eclipse.dwtxhelper.mangoicu.UBreakIterator;
+import  java.mangoicu.UBreakIterator;
 
 public class FormUtil {
 

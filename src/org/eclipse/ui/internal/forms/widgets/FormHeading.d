@@ -58,6 +58,7 @@ import org.eclipse.ui.internal.forms.IMessageToolTipManager;
 import org.eclipse.ui.internal.forms.MessageManager;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 /**

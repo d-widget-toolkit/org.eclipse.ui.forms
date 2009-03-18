@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.internal.forms.widgets.WrappedPageBook;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 /**

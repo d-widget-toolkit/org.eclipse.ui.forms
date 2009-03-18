@@ -34,6 +34,7 @@ import org.eclipse.ui.internal.forms.widgets.FormImages;
 import org.eclipse.ui.internal.forms.widgets.FormUtil;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 /**

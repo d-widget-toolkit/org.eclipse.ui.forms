@@ -36,7 +36,6 @@ import org.eclipse.jface.util.Geometry;
 import org.eclipse.ui.internal.forms.widgets.FormUtil;
 
 import java.lang.all;
-import java.util.List;
 import java.util.Set;
 
 /**

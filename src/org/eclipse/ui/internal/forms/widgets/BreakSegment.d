@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 /**

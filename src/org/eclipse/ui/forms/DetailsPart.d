@@ -27,6 +27,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.forms.widgets.ScrolledPageBook;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Set;

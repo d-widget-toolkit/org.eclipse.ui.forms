@@ -15,6 +15,7 @@ module org.eclipse.ui.internal.forms.widgets.IFocusSelectable;
 
 import org.eclipse.swt.graphics.Rectangle;
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 public interface IFocusSelectable {

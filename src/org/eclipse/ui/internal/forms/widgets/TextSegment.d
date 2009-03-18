@@ -28,9 +28,11 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 
 import java.lang.all;
+import java.util.Vector;
+import java.util.Hashtable;
 import java.util.ArrayList;
 import java.util.Set;
-import org.eclipse.dwtxhelper.mangoicu.UBreakIterator;
+import java.mangoicu.UBreakIterator;
 
 /**
  * @version 1.0

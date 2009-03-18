@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 public class ControlSegment : ObjectSegment, IFocusSelectable {

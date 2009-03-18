@@ -24,6 +24,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.internal.forms.MessageManager;
 
 import java.lang.all;
+import java.util.Vector;
 import java.util.Set;
 import tango.core.Thread;
 

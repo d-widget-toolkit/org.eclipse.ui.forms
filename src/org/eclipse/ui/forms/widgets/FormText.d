@@ -77,6 +77,7 @@ import org.eclipse.ui.internal.forms.widgets.SelectionData;
 import org.eclipse.ui.internal.forms.widgets.TextSegment;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Enumeration;
 import java.util.ArrayList;
 import java.util.Set;

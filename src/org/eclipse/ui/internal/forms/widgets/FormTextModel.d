@@ -25,6 +25,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.ui.forms.HyperlinkSettings;
 
 import java.lang.all;
+import java.util.Vector;
 import java.util.Set;
 import java.io.InputStream;
 

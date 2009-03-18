@@ -31,6 +31,7 @@ import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Enumeration;
 import java.util.ArrayList;
 import java.util.Iterator;

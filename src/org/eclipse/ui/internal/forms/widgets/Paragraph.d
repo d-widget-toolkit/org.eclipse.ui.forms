@@ -24,6 +24,8 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.ui.forms.HyperlinkSettings;
 
 import java.lang.all;
+import java.util.Vector;
+import java.util.Hashtable;
 import java.util.ArrayList;
 import java.util.Set;
 import tango.io.model.IFile;

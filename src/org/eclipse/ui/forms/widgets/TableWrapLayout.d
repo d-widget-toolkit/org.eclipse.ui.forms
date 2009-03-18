@@ -25,6 +25,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Layout;
 
 import java.lang.all;
+import java.util.Vector;
+import java.util.Hashtable;
 import java.util.Enumeration;
 import java.util.Set;
 

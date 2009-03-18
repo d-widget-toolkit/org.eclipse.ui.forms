@@ -22,6 +22,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.ui.forms.HyperlinkSettings;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 /**

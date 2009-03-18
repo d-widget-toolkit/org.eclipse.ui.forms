@@ -23,6 +23,7 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 
 import java.lang.all;
+import java.util.Hashtable;
 import java.util.Set;
 
 /**
