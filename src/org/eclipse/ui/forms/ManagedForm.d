@@ -26,7 +26,7 @@ import org.eclipse.ui.internal.forms.MessageManager;
 import java.lang.all;
 import java.util.Vector;
 import java.util.Set;
-import tango.core.Thread;
+import java.lang.Thread;
 
 /**
  * Managed form wraps a form widget and adds life cycle methods for form parts.
@@ -200,7 +200,7 @@ public class ManagedForm : IManagedForm {
      * <code>asyncExec</code>.
      */
     public void refresh() {
-        Thread t = Thread.getThis();
+        Thread t = Thread.currentThread();
         Thread dt = toolkit.getColors().getDisplay().getThread();
         if (t.opEquals(dt))
             doRefresh();

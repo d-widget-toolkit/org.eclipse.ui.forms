@@ -35,13 +35,13 @@ import java.lang.all;
 import java.util.Set;
 
 import tango.util.Convert;
-import java.lang.JThread;
+import java.lang.Thread;
 
 public final class BusyIndicator : Canvas {
 
     alias Canvas.computeSize computeSize;
 
-    class BusyThread : JThread {
+    class BusyThread : Thread {
         Rectangle bounds;
         Display display;
         GC offScreenImageGC;
@@ -125,7 +125,7 @@ public final class BusyIndicator : Canvas {
                      * Sleep for the specified delay time
                      */
                     try {
-                        JThread.sleep(MILLISECONDS_OF_DELAY);
+                        Thread.sleep(MILLISECONDS_OF_DELAY);
                     } catch (InterruptedException e) {
                         ExceptionPrintStackTrace(e);
                     }
@@ -221,7 +221,7 @@ public final class BusyIndicator : Canvas {
         Image offScreenImage = new Image(display, bounds.width, bounds.height);
         GC offScreenImageGC = new GC(offScreenImage);
         busyThread = new BusyThread(bounds, display, offScreenImageGC, offScreenImage);
-        busyThread.setPriority(JThread.NORM_PRIORITY + 2);
+        busyThread.setPriority(Thread.NORM_PRIORITY + 2);
         busyThread.setDaemon(true);
         busyThread.start();
     }
