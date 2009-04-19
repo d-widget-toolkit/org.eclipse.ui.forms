@@ -12,12 +12,17 @@
  *******************************************************************************/
 module org.eclipse.ui.internal.forms.widgets.TextSegment;
 
+import java.lang.all;
+
 import org.eclipse.ui.internal.forms.widgets.ParagraphSegment;
 import org.eclipse.ui.internal.forms.widgets.Locator;
 import org.eclipse.ui.internal.forms.widgets.SelectionData;
 import org.eclipse.ui.internal.forms.widgets.FormTextModel;
 
-// import com.ibm.icu.text.BreakIterator;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Vector;
+import java.util.Set;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -27,12 +32,7 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 
-import java.lang.all;
-import java.util.Vector;
-import java.util.Hashtable;
-import java.util.ArrayList;
-import java.util.Set;
-import java.mangoicu.UBreakIterator;
+import com.ibm.icu.text.BreakIterator;
 
 /**
  * @version 1.0
@@ -720,10 +720,10 @@ public class TextSegment : ParagraphSegment {
         if (textFragments !is null)
             return;
         ArrayList list = new ArrayList();
-        auto wb =  UBreakIterator.openLineIterator( ULocale.Default, getText() );
-        scope(exit) wb.close();
+        BreakIterator wb = BreakIterator.getLineInstance();
+        wb.setText(getText());
         int cursor = 0;
-        for (int loc = wb.first(); loc !is UBreakIterator.Done; loc = wb.next()) {
+        for (int loc = wb.first(); loc !is BreakIterator.DONE; loc = wb.next()) {
             if (loc is 0)
                 continue;
             String word = text.substring(cursor, loc);

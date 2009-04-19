@@ -13,8 +13,8 @@
  *******************************************************************************/
 module org.eclipse.ui.internal.forms.widgets.FormUtil;
 
-
-// import com.ibm.icu.text.BreakIterator;
+import java.lang.all;
+import java.util.Set;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
@@ -40,10 +40,7 @@ import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ILayoutExtension;
 
-import java.lang.all;
-import java.util.Set;
-
-import  java.mangoicu.UBreakIterator;
+import com.ibm.icu.text.BreakIterator;
 
 public class FormUtil {
 
@@ -109,12 +106,12 @@ public class FormUtil {
     }
 
     public static int computeMinimumWidth(GC gc, String text) {
-        auto wb =  UBreakIterator.openWordIterator( ULocale.Default, text );
-        scope(exit) wb.close();
+        BreakIterator wb = BreakIterator.getWordInstance();
+        wb.setText(text);
         int last = 0;
         int width = 0;
 
-        for (int loc = wb.first(); loc !is UBreakIterator.Done; loc = wb.next()) {
+        for (int loc = wb.first(); loc !is BreakIterator.DONE; loc = wb.next()) {
             String word = text.substring(last, loc);
             Point extent = gc.textExtent(word);
             width = Math.max(width, extent.x);
@@ -127,8 +124,8 @@ public class FormUtil {
     }
 
     public static Point computeWrapSize(GC gc, String text, int wHint) {
-        auto wb =  UBreakIterator.openWordIterator( ULocale.Default, text );
-        scope(exit) wb.close();
+        BreakIterator wb = BreakIterator.getWordInstance();
+        wb.setText(text);
         FontMetrics fm = gc.getFontMetrics();
         int lineHeight = fm.getHeight();
 
@@ -136,7 +133,7 @@ public class FormUtil {
         int last = 0;
         int height = lineHeight;
         int maxWidth = 0;
-        for (int loc = wb.first(); loc !is UBreakIterator.Done; loc = wb.next()) {
+        for (int loc = wb.first(); loc !is BreakIterator.DONE; loc = wb.next()) {
             String word = text.substring(saved, loc);
             Point extent = gc.textExtent(word);
             if (extent.x > wHint) {
@@ -166,8 +163,8 @@ public class FormUtil {
 
     public static void paintWrapText(GC gc, String text, Rectangle bounds,
             bool underline) {
-        auto wb =  UBreakIterator.openWordIterator( ULocale.Default, text );
-        scope(exit) wb.close();
+        BreakIterator wb = BreakIterator.getWordInstance();
+        wb.setText(text);
         FontMetrics fm = gc.getFontMetrics();
         int lineHeight = fm.getHeight();
         int descent = fm.getDescent();
@@ -177,7 +174,7 @@ public class FormUtil {
         int y = bounds.y;
         int width = bounds.width;
 
-        for (int loc = wb.first(); loc !is UBreakIterator.Done; loc = wb.next()) {
+        for (int loc = wb.first(); loc !is BreakIterator.DONE; loc = wb.next()) {
             String line = text.substring(saved, loc);
             Point extent = gc.textExtent(line);
 
