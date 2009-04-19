@@ -67,8 +67,8 @@ public class Locator : Cloneable {
     public int getMiddle(int segmentHeight, bool text) {
         if (heights !is null && heights.size() > rowCounter) {
             Integer [] rdata = arrayFromObject!(Integer)(heights.get(rowCounter));
-            int rheight = rdata[0].value;
-            int rleading = rdata[1].value;
+            int rheight = rdata[0].intValue();
+            int rleading = rdata[1].intValue();
             if (text)
                 return y + rheight/2 - segmentHeight/2 - rleading;
             return y + rheight/2 - segmentHeight/2;
@@ -78,8 +78,8 @@ public class Locator : Cloneable {
     public int getBaseline(int segmentHeight, bool text) {
         if (heights !is null && heights.size()>rowCounter) {
             Integer [] rdata = arrayFromObject!(Integer)(heights.get(rowCounter));
-            int rheight = rdata[0].value;
-            int rleading = rdata[1].value;
+            int rheight = rdata[0].intValue();
+            int rleading = rdata[1].intValue();
             if (text)
                 return y + rheight - segmentHeight - rleading;
             return y + rheight - segmentHeight;

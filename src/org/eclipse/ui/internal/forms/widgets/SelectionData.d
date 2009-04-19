@@ -93,7 +93,7 @@ public class SelectionData {
         return isInverted(rowHeight) ? start.x:stop.x;
     }
     private bool isInverted(Locator locator) {
-        int rowHeight = arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].value;
+        int rowHeight = arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].intValue();
         return isInverted(rowHeight);
     }
     private bool isInverted(int rowHeight) {
@@ -112,7 +112,7 @@ public class SelectionData {
     public bool isSelectedRow(Locator locator) {
         if (!isEnclosed())
             return false;
-        int rowHeight =  arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].value;
+        int rowHeight =  arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].intValue();
         return isSelectedRow(locator.y, rowHeight);
     }
     public bool isSelectedRow(int y, int rowHeight) {
@@ -124,7 +124,7 @@ public class SelectionData {
     public bool isFirstSelectionRow(Locator locator) {
         if (!isEnclosed())
             return false;
-        int rowHeight =  arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].value;
+        int rowHeight =  arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].intValue();
         return (locator.y + rowHeight >= getTopOffset() &&
                 locator.y <= getTopOffset());
     }
@@ -137,7 +137,7 @@ public class SelectionData {
     public bool isLastSelectionRow(Locator locator) {
         if (!isEnclosed())
             return false;
-        int rowHeight = arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].value;
+        int rowHeight = arrayFromObject!(Integer)(locator.heights.get(locator.rowCounter))[0].intValue();
         return (locator.y + rowHeight >=getBottomOffset() &&
                 locator.y <= getBottomOffset());
     }
